@@ -55,7 +55,7 @@ public class Permutations implements Iterable<Object[]> {
     private int[] gen_indexes(int index) {
         int x = index;
         for (int i = 1; i < pick; i++) {
-            x += (Math.pow(10, i) - (i + set.length - pick) * Math.pow(10, i - 1)) * Math.floor(index / (double) (factorial(i + set.length - pick) / Math.round(set.length / (double) pick))); //(set.length - pick ? 0 : 1)
+            x += (Math.pow(10, i) - (i + set.length - pick) * Math.pow(10, i - 1)) * Math.floor(index / (double) (factorial(i + set.length - pick) / Math.round(set.length / (double) pick) /* could also be (set.length - pick ? 0 : 1) */));
         }
 
         int[] indxs = new int[pick];
