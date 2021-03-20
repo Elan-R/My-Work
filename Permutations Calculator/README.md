@@ -1,6 +1,6 @@
 The permutation calculator takes in an array of objects and an integer of items to pick from the array
 For example, `{a, b, c}` pick 2 could be `{b, a}`
-A valid permutation of 
+A valid permutation of the set `{b, b, g, j}` with a pick of 4 could be `{g, b, b, j}`
 
 The public functions are as follows:
  - The `next()` function returns the next permutation
@@ -16,6 +16,8 @@ There are two algorithms in use in the class. Both of which I entirely thought o
 
 ### The First Algorithm ###
 (I thought of this one after 5 minutes of thinking about it in bed)
+
+The ideas in this algorithm work for every case, and is used by these functions: `next()`, `reset()`, and `random()`.
 
 Let there be a set of four items, `{a, b, c, d}`, with a pick of 4.
 Let there be another set where we will build our permutations.
@@ -58,4 +60,9 @@ These patterns continue until the final permutation, (4! / (4 - 4)! = 24th permu
 ### The Second Algorithm ###
 (This one took me a few days to come up with and refine)
 
-f(x) = x + <img src="https://render.githubusercontent.com/render/math?math=e^{i %2B\pi} =x%2B1">
+This algorithm only works if the difference of the length of the set and the pick is 0, 1, or 2, or if the pick is 1 or 0.
+This algorithm is used in the `permutation_at(int index)` and `set_next(int index)` functions.
+
+Where `s` is the length of the set and `p` is the pick, the array of indexes is:
+<img src="https://render.githubusercontent.com/render/math?math=f(x) = x%2B\sum_{i = 1}^{p - 1}{10^i - (i%2Bs - p)10^{i - 1} floor(x / (i%2Bs - p)! / round(s / p))}">
+
