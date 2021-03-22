@@ -37,14 +37,21 @@ Also note that the instructions are ordered as follows:
 - 5th permutation is produced by instructions `0 2 1`
 - And so on...
 
-For each instructions pattern I figured out how to get the next instructions pattern. For example after pattern `0 2 0` comes pattern `0 2 1`.  I also figured out given an index how to get its corresponding instructions pattern.  For example how to get `0 2 1` for the 5th index.
+For each instructions pattern I figured out how to get the next instructions pattern. For example after pattern `0 2 0` comes pattern `0 2 1`.  I use this logic to implement the `next()` function.
 
-### My Formula ###
-(This one took me a few days to come up with and refine)
+I also figured out given an index how to get its corresponding instructions pattern.  For example how to get `0 2 1` for the 5th index.  I use this logic to implement the `permutation_at(int index)` and `set_next(int index)` functions.  This mathematical formula is quite complex and only works for picking 0, 1, N-2, N-1, or N items from a set with N items.
 
-This algorithm only works if the difference of the length of the set and the pick is 0, 1, or 2, or if the pick is 1 or 0.
-This algorithm is used in the `permutation_at(int index)` and `set_next(int index)` functions.
+x = the index of the permutation (example: give me the 5th permutation)
+s = the length of the set (example: 4 for set `{A, B, C, D}`)
+p = the number of items to pick from the set (example: pick 3 items)
+f(x) = the instructions pattern to apply on the set to get the xth permutation (example: 21, which left padded is `0 2 1`)
 
-Where `s` is the length of the set and `p` is the pick, the array of indexes is:
 <img src="https://render.githubusercontent.com/render/math?math=f(x) = x%2B\sum_{i = 1}^{p - 1}{10^i - (i%2Bs - p)10^{i - 1} floor(x / (i%2Bs - p)! / round(s / p))}">
 
+So for example:
+- f(0) = 0 which translates to `0 0 0` after left-padding
+- f(1) = 1 which translates to `0 0 1` after left-padding
+- f(2) = 10 which translates to `0 1 0` after left-padding
+- f(3) = 11 which tranlates to `0 1 1` after left-padding
+- f(4) = 20 which translates to `0 2 0` after left-padding
+- f(5) = 21 which translates to `0 2 1` after left-padding
