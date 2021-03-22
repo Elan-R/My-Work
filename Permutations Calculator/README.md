@@ -32,7 +32,7 @@ Also note that the instructions are ordered as follows:
 - 0th permutation is produced by instructions `0 0 0`
 - 1st permutation is produced by instructions `0 0 1`
 - 2nd permutation is produced by instructions `0 1 0`
-- 3ed permutation is produced by instructions `0 1 1`
+- 3rd permutation is produced by instructions `0 1 1`
 - 4th permutation is produced by instructions `0 2 0`
 - 5th permutation is produced by instructions `0 2 1`
 - And so on...
@@ -41,10 +41,10 @@ For each instructions pattern I figured out how to get the next instructions pat
 
 I also figured out given an index how to get its corresponding instructions pattern.  For example how to get `0 2 1` for the 5th index.  I use this logic to implement the `permutation_at(int index)` and `set_next(int index)` functions.  This mathematical formula is quite complex and only works for picking 0, 1, N-2, N-1, or N items from a set with N items.
 
-x = the index of the permutation (example: give me the 5th permutation)
-s = the length of the set (example: 4 for set `{A, B, C, D}`)
-p = the number of items to pick from the set (example: pick 3 items)
-f(x) = the instructions pattern to apply on the set to get the xth permutation (example: 21, which left padded is `0 2 1`)
+- x = the index of the permutation (example: give me the 5th permutation)
+- s = the length of the set (example: 4 for set `{A, B, C, D}`)
+- p = the number of items to pick from the set (example: pick 3 items)
+- f(x) = the instructions pattern to apply on the set to get the xth permutation (example: 21, which left padded is `0 2 1`)
 
 <img src="https://render.githubusercontent.com/render/math?math=f(x) = x%2B\sum_{i = 1}^{p - 1}{10^i - (i%2Bs - p)10^{i - 1} floor(x / (i%2Bs - p)! / round(s / p))}">
 
