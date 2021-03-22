@@ -1,16 +1,30 @@
-The permutation calculator takes in an array of objects and an integer of items to pick from the array
-For example, `{a, b, c}` pick 2 could be `{b, a}`
-A valid permutation of the set `{b, b, g, j}` with a pick of 4 could be `{g, b, b, j}`
+The permutation calculator takes in an array of objects and the number of items to pick from that array. For example: `{a, b, c}` pick `2`.  You can use the permutation calculator in different ways to retrieve permutations. You can interate over the calculator to retrieve all the permutations one at a time. You an also retrieve the Nth permutation or a random permutation.  The permutation calculator imposes a certain order to the permutations.  For example a random permutation of `{a, b, c}` pick `2` is `{b, a}`.
 
 The public functions are as follows:
  - The `next()` function returns the next permutation
- - The `reset()` function resets the object (so that `next()` returns the first permutation)
- - The `permutation_at(int index)` function returns the permutation at a given index
- - The `set_next(int index)` function sets the next permutation to the one at the given index (so that the next call of `next()` will return it)
+ - The `reset()` function resets the calculator so that a subsequent call to `next()` returns the first permutation
+ - The `permutation_at(int index)` function returns the permutation at the given index
+ - The `set_next(int index)` function sets the index to use for the next call of `next()`
  - The `random()` function returns a random permutation
- - The `factorial(int n)` function returns the factorial of an integer (and returns 1 for netagive values) (this function is used internally)
+ - The `factorial(int n)` function returns the factorial of an integer (and returns 1 for netagive values)
 
-The class is also iterable (it will iterate over the permutations starting from the first one by calling `next()` on an inner new `Permutations` class using the same array and pick)
+### My Solution ###
+
+My solution uses a set of instructions to the calculator to build a particular permutation. For example the instruction `0 1 0` to the set `{A, B, C, D}` produces the permutation `{A, C, B}`.
+
+If the calculator was asked to pick `3` from the set `{A, B, C, D}` then it would use the following instructions to figure out the permutations:
+
+Instructions `0 0 0` would produce `{A, B, C}`
+Instructions `0 0 1` would produce `{A, B, D}`
+Instructions `0 1 0` would produce `{A, C, B}`
+Instructions `0 1 1` would produce `{A, C, D}`
+Instructions `0 2 0` would produce `{A, D, B}`
+Instructions `0 2 1` would produce `{A, D, C}`
+And so on...
+
+Lets look how the calculator processes the instructions `0 1 0` over the set `{A, B, C, D}`, as an example:
+1. The first 0 in `0 1 0` tells the calculator to pop the 0th item from `{A, B, C, D}` and put it into the result set `{}`, so we end up with `{B, C, D}` and `{A}`
+2. The second
 
 There are two algorithms in use in the class. Both of which I entirely thought of and created myself, but only one works for all cases.
 
