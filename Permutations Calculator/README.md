@@ -37,54 +37,9 @@ Also note that the instructions are ordered as follows:
 - 5th permutation is produced by instructions `0 2 1`
 - And so on...
 
-For each instructions pattern I figured out how to figure out the next instructions pattern. For example after pattern `0 2 0` comes pattern `0 2 1`.  I also figured out given an index how to figure out its corresponding instructions pattern.  For example how to get `0 2 1` for the 5th index.
+For each instructions pattern I figured out how to get the next instructions pattern. For example after pattern `0 2 0` comes pattern `0 2 1`.  I also figured out given an index how to get its corresponding instructions pattern.  For example how to get `0 2 1` for the 5th index.
 
-There are two algorithms in use in the class. Both of which I entirely thought of and created myself, but only one works for all cases.
-
-### The First Algorithm ###
-(I thought of this one after 5 minutes of thinking about it in bed)
-
-The ideas in this algorithm work for every case, and is used by these functions: `next()`, `reset()`, and `random()`.
-
-Let there be a set of four items, `{a, b, c, d}`, with a pick of 4.
-Let there be another set where we will build our permutations.
-To construct the first permutation, we will start with the obvious first item, `a`, and pop it from the set.
-The permutation so far is `{a}`, and the set is `{b, c, d}`.
-Next, we are going to take the next obvious item, `b`, and again pop it from the set.
-Permutation: `{a, b}`
-Set: `{c, d}`
-The process repeats for `c` and `d`, successfuly creating our first permutation of `{a, b, c, d}`.
-Now we will reset the set to `{a, b, c, d}` and build our second permutation.
-
-We will keep the steps from the first permutation and end up with these sets:
-Permutation: `{a, b}`
-Set: `{c, d}`
-After this point, if we choose `c` as our next item, `d` will be the only one left and the permutation will be the same, so we know the `d` must be the same item, followed by `c`.
-Permutation: `{a, b, d, c}`
-Set: `{}`
-And there's our second permutation!
-
-To create our third permutation, we will repeat the starting steps, but only this far:
-Permutation: `{a}`
-Set: `{b, c, d}`
-If we choose `b` as our next item, the only two items to choose from after that are `c` and `d`, which woule create the permutations `{a, b, c, d}` and `{a, b, d, c}`, which we already found.
-We know that the next item cannot be `b`, so the next obvious choice is to choose `c`, and, as usual, pop it from the set.
-Permutation: `{a, c}`
-Set: `{b, d}`
-The next obvious items are `b` and `c`.
-Permutation: `{a, c, b, d}`
-Set: `{}`
-So `{a, c, b, d}` is our third permutation.
-
-Following our logic from the second permutation, all we need to do to find the fourth permutation is copy the items from the previous permutation until there isn't room for change, and then choose the item after the item that doesn't allow for change, and follow our basic logic for the remaining items.
-This means our fourth permutation will be the third permutation except with the last two values switched: `{a, c, d, b}`
-And then for the fifth permutation, we can only use the first item, then need to jump to `d`.
-Permutation: `{a, d}`
-Set: `{b, c}`
-The rest of the items are obvious, making the permutation `{a, d, b, c}`.
-These patterns continue until the final permutation, (4! / (4 - 4)! = 24th permutation), `{d, c, b, a}`.
-
-### The Second Algorithm ###
+### My Formula ###
 (This one took me a few days to come up with and refine)
 
 This algorithm only works if the difference of the length of the set and the pick is 0, 1, or 2, or if the pick is 1 or 0.
