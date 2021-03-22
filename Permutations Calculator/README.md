@@ -1,4 +1,4 @@
-The permutation calculator takes in an array of objects and the number of items to pick from that array. For example: `{a, b, c}` pick `2`.  You can use the permutation calculator in different ways to retrieve permutations. You can interate over the calculator to retrieve all the permutations one at a time. You an also retrieve the Nth permutation or a random permutation.  The permutation calculator imposes a certain order to the permutations.  For example a random permutation of `{a, b, c}` pick `2` is `{b, a}`.
+The permutation calculator takes in an array of objects and the number of items to pick from that array. For example: `{A, B, C, D}` pick `3`.  You can use the permutation calculator in different ways to retrieve permutations. You can interate over the calculator to retrieve all the permutations one at a time. You an also retrieve the Nth permutation or a random permutation.  The permutation calculator imposes a certain order to the permutations.  For example the 2nd permutation of `{A, B, C, D}` pick `3` is `{A, C, B}`.
 
 The public functions are as follows:
  - The `next()` function returns the next permutation
@@ -22,11 +22,11 @@ If the calculator was asked to pick `3` from the set `{A, B, C, D}` then it woul
 - Instructions `0 2 1` would produce `{A, D, C}`
 - And so on...
 
-Lets look at how the calculator processes the instructions `0 1 0` over the set `{A, B, C, D}` to produce the resulting permutation `{A, C, B}`. The numbers in the instructions tell the calculator which index to pop out of the set and add into the resulting permutation.  It processes the instructions left to right.
+Lets look at how the calculator processes the instructions `0 1 0` on the set `{A, B, C, D}` to produce the resulting permutation `{A, C, B}`. The numbers in the instructions tell the calculator which index to pop out of the set and add into the resulting permutation.  It processes the instructions left to right.
 1. Start with the following - Instructions: `0 1 0` Set: `{A, B, C, D}` Permutation: `{}`
-2. After processing the zero - Instructions: `1 0` Set: `{B, C, D}` Permutation: `{A}`
-3. After processing the one - Instructions: `0` Set: `{B, D}` Permutation: `{A, C}`
-4. After processing the zero - Instructions: ` ` Set: `{D}` Permutation: `{A, C, B}`
+2. After processing the zero - Instructions: `1 0` Set: `{B, C, D}` Permutation: `{A}` (A at index 0 poped out of set and added to permutation)
+3. After processing the one - Instructions: `0` Set: `{B, D}` Permutation: `{A, C}` (C at index 1 poped out of set and added to permutation)
+4. After processing the zero - Instructions: ` ` Set: `{D}` Permutation: `{A, C, B}` (B at index 0 poped out of set and added to permutation)
 
 Also note that the instructions are ordered as follows:
 - 0th permutation is produced by instructions `0 0 0`
@@ -35,6 +35,9 @@ Also note that the instructions are ordered as follows:
 - 3ed permutation is produced by instructions `0 1 1`
 - 4th permutation is produced by instructions `0 2 0`
 - 5th permutation is produced by instructions `0 2 1`
+- And so on...
+
+For each instructions pattern I figured out how to figure out the next instructions pattern. For example after pattern `0 2 0` comes pattern `0 2 1`.  I also figured out given an index how to figure out its corresponding instructions pattern.  For example how to get `0 2 1` for the 5th index.
 
 There are two algorithms in use in the class. Both of which I entirely thought of and created myself, but only one works for all cases.
 
