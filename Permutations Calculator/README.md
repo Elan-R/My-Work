@@ -14,23 +14,27 @@ My solution uses a set of instructions to the calculator to build a particular p
 
 If the calculator was asked to pick `3` from the set `{A, B, C, D}` then it would use the following instructions to figure out the permutations:
 
-Instructions `0 0 0` would produce `{A, B, C}`
-Instructions `0 0 1` would produce `{A, B, D}`
-Instructions `0 1 0` would produce `{A, C, B}`
-Instructions `0 1 1` would produce `{A, C, D}`
-Instructions `0 2 0` would produce `{A, D, B}`
-Instructions `0 2 1` would produce `{A, D, C}`
-And so on...
+- Instructions `0 0 0` would produce `{A, B, C}`
+- Instructions `0 0 1` would produce `{A, B, D}`
+- Instructions `0 1 0` would produce `{A, C, B}`
+- Instructions `0 1 1` would produce `{A, C, D}`
+- Instructions `0 2 0` would produce `{A, D, B}`
+- Instructions `0 2 1` would produce `{A, D, C}`
+- And so on...
 
-Lets look at how the calculator processes the instructions `0 1 0` over the set `{A, B, C, D}` to produce the resulting permutation `{A, C, B}`. The numbers in the instructions tell the calculator which index to pop out of the set and put into the resulting permutation.  It processes the instructions left to right.
+Lets look at how the calculator processes the instructions `0 1 0` over the set `{A, B, C, D}` to produce the resulting permutation `{A, C, B}`. The numbers in the instructions tell the calculator which index to pop out of the set and add into the resulting permutation.  It processes the instructions left to right.
 1. Start with the following - Instructions: `0 1 0` Set: `{A, B, C, D}` Permutation: `{}`
 2. After processing the zero - Instructions: `1 0` Set: `{B, C, D}` Permutation: `{A}`
 3. After processing the one - Instructions: `0` Set: `{B, D}` Permutation: `{A, C}`
 4. After processing the zero - Instructions: ` ` Set: `{D}` Permutation: `{A, C, B}`
 
-
-1. The first 0 in `0 1 0` tells the calculator to pop the 0th item from `{A, B, C, D}` and put it into the result set `{}`, so we end up with `{B, C, D}` and `{A}`
-2. The second
+Also note that the instructions are ordered as follows:
+- 0th permutation is produced by instructions `0 0 0`
+- 1st permutation is produced by instructions `0 0 1`
+- 2nd permutation is produced by instructions `0 1 0`
+- 3ed permutation is produced by instructions `0 1 1`
+- 4th permutation is produced by instructions `0 2 0`
+- 5th permutation is produced by instructions `0 2 1`
 
 There are two algorithms in use in the class. Both of which I entirely thought of and created myself, but only one works for all cases.
 
