@@ -14,5 +14,6 @@ public class Compiler {
     public static void main(String[] args) throws IOException, Parser.SyntaxError, Parser.GameError {
         World w = new Parser(get_file("Select a file to compile"), true).parse();
         w.save(get_file("Select a file to save to"));
+        System.exit(0);
     }
 }
