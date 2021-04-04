@@ -76,6 +76,7 @@ public class Game {
         ObjectInputStream in = new ObjectInputStream(f);
         new Game((World) in.readObject());
         in.close();
-        f.close(); 
+        f.close();
+        System.exit(0);
     }
 }
