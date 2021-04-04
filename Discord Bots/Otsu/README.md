@@ -2,7 +2,7 @@ This code depends on [discord.py](https://discordpy.readthedocs.io/en/stable/) b
 
 This is a discord bot.
 
-This is an experimental bot with the following features (note that some might be unfinished, broken, or outdated, but most worked fine when the bot was in use):
+This is an experimental bot written when I was learning Python with the following features (note that some might be unfinished, broken, or outdated, but most worked fine when the bot was in use):
  - Information about the bot's functions
  - Checks the clients ping time
  - Deletes messages
