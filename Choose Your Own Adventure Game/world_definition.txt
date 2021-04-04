@@ -1,0 +1,33 @@
+#Menu#
+
+{
+start
+"you're walking along a dirt road"
+"you come across a farm"
+*1* "go to the farm" farm
+*2* "continue down the road" road
+}
+
+{
+farm
+"you walk up the road leading to the house"
+"in front of you is the farmhouse. to your left is a field of wheat"
+*1* "go in the house" end game
+*2* "explore the field" end game
+"You hear a sound behind you and hurry along"
+}
+
+{
+road
+"you follow the dirt road into a dark forest"
+"you hear sounds to your left and right"
+*1* "stay on the road" end game
+*2* "head into the forest" end game
+}
+
+{
+end game
+"Game demo over!"
+*1* "Play again" start
+*2* "Quit" end
+}
