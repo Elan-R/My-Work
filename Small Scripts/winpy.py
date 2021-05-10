@@ -10,6 +10,8 @@ console.push("import os")
 python_exe = executable[:executable.rfind("\\")]
 # Change the directory of the interpreter to the executables's directory
 console.push(f"os.chdir(r'{python_exe}')")
+# Create the doc function that prints an object's __doc__ attribute
+console.push("doc = lambda obj: print(getattr(obj, '__doc__'))")
 
 # Standard Python REPL header
 print(version)
