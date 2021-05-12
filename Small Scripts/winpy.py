@@ -12,6 +12,8 @@ python_exe = executable[:executable.rfind("\\")]
 console.push(f"os.chdir(r'{python_exe}')")
 # Create the doc function that prints an object's __doc__ attribute
 console.push("doc = lambda obj: print(getattr(obj, '__doc__'))")
+console.push("setattr(doc, '__doc__', 'A function that takes any object as an argument and prints its __doc__ attribute')")
+
 
 # Standard Python REPL header
 print(version)
