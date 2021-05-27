@@ -1,3 +1,8 @@
+# a function I made to infinitely run a group of async functions
+# as an iterator that returns awaitables that return the functions'
+# results
+# (and code to demonstrate it)
+
 import asyncio
 
 async def forever_do(futures):
