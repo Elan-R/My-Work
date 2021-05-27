@@ -7,13 +7,15 @@ console = InteractiveConsole(filename="<winpy console>")
 # Import the os module in the interpreter for general use
 console.push("import os")
 # Find the Python interpreter executable's path
-python_exe = executable[:executable.rfind("\\")]
+python_path = executable[:executable.rfind("\\")]
 # Change the directory of the interpreter to the executables's directory
-console.push(f"os.chdir(r'{python_exe}')")
+console.push(f"os.chdir(r'{python_path}')")
 # Create the doc function that prints an object's __doc__ attribute
 console.push("doc = lambda obj: print(getattr(obj, '__doc__'))")
 console.push("setattr(doc, '__doc__', 'A function that takes any object as an argument and prints its __doc__ attribute')")
-
+# Create the cls function that clears the terminal
+# Uses runsource instead of push to include multiple lines (a one line lambda would print 0 every time)
+console.runsource("def cls():\n os.system('cls')\n")
 
 # Standard Python REPL header
 print(version)
